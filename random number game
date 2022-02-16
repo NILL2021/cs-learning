@@ -1,0 +1,39 @@
+using System;
+
+namespace randnum
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            while(true)
+            {
+                Random random = new Random();
+                int num = random.Next(1, 100);
+                Console.WriteLine("\t\t\tA random number has been chosen between 1 and 100! Pick the right number to win!\n\t\t\tWrite 'play' to play.");
+
+                String guess = Console.ReadLine();
+                if (guess == "play")
+                    guess = "0";
+                {
+                    while (Convert.ToInt32(guess) != num)
+                    {
+                        if (Convert.ToInt32(guess) > num)
+                        {
+                            Console.WriteLine("\t\t\t" + guess + " is too big!");
+                        }
+                        else if(Convert.ToInt32(guess) < num)
+                        {
+                            Console.WriteLine("\t\t\t" + guess + " is too small!");
+                        }
+                            Console.Write("\t\t\tGuess the number: ");
+                        guess = Console.ReadLine();
+                    }
+                    Console.Beep();
+                    Console.WriteLine("\t\t\t"+guess + " was correct!\n\n Press [ENTER] to play again!");
+                    Console.ReadKey();
+                }
+            }
+        }
+    }
+}
