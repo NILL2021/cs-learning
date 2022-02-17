@@ -1,0 +1,39 @@
+using System;
+
+namespace randnum
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Human human1 = new Human();
+            Human human2 = new Human();
+
+            human1.name = "Fyrgys";
+            human1.age = 40;
+            human1.Sleep();
+            human2.name = "Larry";
+            human2.age = 7;
+            human2.Eat();
+
+            Console.ReadKey();
+
+            
+        }
+    }
+    class Human
+    {
+        public String name;
+        public int age;
+
+        public void Eat()
+        {
+            Console.WriteLine($"{name} is eating (they are {age})");
+        }
+        public void Sleep()
+        {
+            Console.WriteLine($"{name} is sleeping (they are {age})");
+        }
+    }
+}
