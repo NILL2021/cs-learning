@@ -6,33 +6,48 @@ namespace randnum
     {
         static void Main(string[] args)
         {
-            while(true)
-            {
-                Random random = new Random();
-                int num = random.Next(1, 100);
-                Console.WriteLine("\t\t\tA random number has been chosen between 1 and 100! Pick the right number to win!\n\t\t\tWrite 'play' to play.");
+            while (true)
 
-                String guess = Console.ReadLine();
-                if (guess == "play")
-                    guess = "0";
+            {
+                try
                 {
-                    while (Convert.ToInt32(guess) != num)
+                    Random random = new Random();
+                    int num = random.Next(1, 100);
+                    Console.WriteLine("\t\t\tA random number has been chosen between 1 and 100! Pick the right number to win!\n\t\t\tWrite 'play' to play.");
+
+                    String guess = "\t\t\t" + Console.ReadLine();
+                    if (guess == "\t\t\tplay")
+                        guess = "0";
                     {
-                        if (Convert.ToInt32(guess) > num)
+                        while (Convert.ToInt32(guess) != num)
                         {
-                            Console.WriteLine("\t\t\t" + guess + " is too big!");
-                        }
-                        else if(Convert.ToInt32(guess) < num)
-                        {
-                            Console.WriteLine("\t\t\t" + guess + " is too small!");
-                        }
+                            if (Convert.ToInt32(guess) > num)
+                            {
+                                Console.WriteLine("\t\t\t" + guess + " is too big!");
+                            }
+                            else if (Convert.ToInt32(guess) < num)
+                            {
+                                Console.WriteLine("\t\t\t" + guess + " is too small!");
+                            }
                             Console.Write("\t\t\tGuess the number: ");
-                        guess = Console.ReadLine();
+                            guess = Console.ReadLine();
+                        }
+                        Console.Beep();
+                        Console.WriteLine("\t\t\t" + guess + " was correct!\n\n Press [ENTER] to play again!");
+                        Console.ReadKey();
                     }
-                    Console.Beep();
-                    Console.WriteLine("\t\t\t"+guess + " was correct!\n\n Press [ENTER] to play again!");
-                    Console.ReadKey();
                 }
+                catch (Exception e)
+                {
+                    Console.Clear();
+                    Console.WriteLine("\n\n\t\t\tSomething went wrong! Press enter to play again... :(\n\n");
+                    Console.ReadLine();
+                }
+                finally
+                {
+                    Console.WriteLine("\n");
+                }
+               
             }
         }
     }
